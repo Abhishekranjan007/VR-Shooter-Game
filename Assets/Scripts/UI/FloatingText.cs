@@ -10,11 +10,20 @@ public class FloatingText : MonoBehaviour
     private Color startColor;
     private Transform cam;
 
+    private float timer;
+
     void Awake()
     {
         textMesh = GetComponent<TextMeshPro>();
-        startColor = textMesh.color;
-        cam = Camera.main.transform;
+        startColor = textMesh.color;        
+
+        timer = lifeTime;
+    }
+
+    void Start()
+    {
+        if (Camera.main != null)
+            cam = Camera.main.transform;
     }
 
     void Update()
@@ -24,15 +33,20 @@ public class FloatingText : MonoBehaviour
 
         // Face camera
         if (cam != null)
-            transform.forward = cam.forward;
+        {
+            transform.LookAt(cam);
+            transform.Rotate(0, 180f, 0);
+            //transform.forward = cam.forward;
+        }
+            
 
         // Fade out
-        lifeTime -= Time.deltaTime;
-        float alpha = lifeTime;
+        timer -= Time.deltaTime;
+        float alpha = timer / lifeTime;
 
         textMesh.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
-        if (lifeTime <= 0)
+        if (timer <= 0)
             Destroy(gameObject);
     }
 

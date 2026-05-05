@@ -65,6 +65,8 @@ public class Player : MonoBehaviour, IDamage
         if ((damage < 0 && _health < 100f) || (damage > 0 && _health > 0))
         {            
             _health -= damage;
+            if (_health > 100f)
+                _health = 100f;
         }
 
         if (_health <= 0)

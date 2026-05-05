@@ -41,7 +41,9 @@ public class EnemySpawner : MonoBehaviour
     {
         timeSinceLastSpawn = spawnInterval;
         enemiesKilled = 0;
-        
+        //Stats.Instance.SetTotal(maxEnemiesNumber);
+
+
 
         Subscribe();
     }

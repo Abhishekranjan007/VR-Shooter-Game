@@ -249,21 +249,30 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         _health -= damageAmount;
 
+        SpawnBlood(hitPoint);
         Stats.Instance.AddScore();
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
             onEnemyDead?.Invoke(this);
         }
 
+        
+    }    
+
+    private void SpawnBlood(Vector3 hitPoint)
+    {
         ParticleSystem effect = Instantiate(
             bloodSpillEffect,
             hitPoint,
-            Quaternion.LookRotation(hitPoint - transform.position)
+            Quaternion.LookRotation(Vector3.up)
         );
 
-        effect.Play();
+        effect.transform.parent = null;
+        effect.Play(true);
+
+        Destroy(effect.gameObject, effect.main.duration + effect.main.startLifetime.constantMax);
     }
 
 

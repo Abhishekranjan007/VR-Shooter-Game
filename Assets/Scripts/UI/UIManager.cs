@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
         if (floatingText != null)
         {
-            floatingText.SetText("HEADSHOT +" + bonus, Color.red);
+            floatingText.SetText("HEADSHOT +" + bonus, new Color(1f, 0.2f, 0.2f));
         }
     }
 }
