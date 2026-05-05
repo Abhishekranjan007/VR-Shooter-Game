@@ -32,7 +32,7 @@ A VR-based shooter game built using Unity where the player fights enemies in tim
 - Event-driven programming
 
 ## 📸 Screenshots
-![Gameplay](Assets/Screenshots/Screenshot (52).png)
+![Gameplay](Assets/Screenshots/Screenshot21.png)
 
 ## 🎥 Gameplay Video
 (Add YouTube link here)
